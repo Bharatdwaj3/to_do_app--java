@@ -30,10 +30,11 @@ public class Task {
     public void  setTask(String task){
         this.task=task;
     }
-    public boolean isComleted(){
+    public boolean isCompleted(){
         return completed;
     }
     public void setCompleted(boolean completed){
         this.completed=completed;
     }
+    
 }
