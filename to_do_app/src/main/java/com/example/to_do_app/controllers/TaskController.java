@@ -14,7 +14,11 @@ import java.util.List;
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
     @Autowired
-    private TaskService taskService;
+    private final TaskService  taskService;
+    public TaskController(TaskService taskService){
+        this.taskService=taskService;
+    }
+    
     
     @GetMapping("/")
     public ResponseEntity<List<Task>> getAllTass(){
