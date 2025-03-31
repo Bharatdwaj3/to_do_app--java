@@ -19,7 +19,7 @@ public class TaskController {
     
     
     @GetMapping("/")
-    public ResponseEntity<List<Task>> getAllTass(){
+    public ResponseEntity<List<Task>> getAllTasks(){
         return ResponseEntity.ok(taskService.getAllTask());
     }
     @GetMapping("/completed")
