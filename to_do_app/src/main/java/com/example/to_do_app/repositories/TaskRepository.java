@@ -1,8 +1,7 @@
-package main.java.com.example.to_do_app.repositories;
+package com.example.to_do_app.repositories;
 
-import com.example.demo.models.Task;
-
-import org.springframework.data.jpa.respository.JpaResository;
+import com.example.to_do_app.models.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task,Long>{
     public Task findByTask(String task);
     public List<Task> findByCompletedTrue();
-    public List<Task> findByCompletedFalse();
+    public List<Task> findByCompleteFalse();
     public List<Task> findAll();
     public Task getById(Long id);
 }

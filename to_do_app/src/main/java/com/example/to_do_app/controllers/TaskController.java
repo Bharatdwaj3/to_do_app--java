@@ -3,9 +3,8 @@ package com.example.to_do_app.controllers;
 import com.example.to_do_app.models.Task;
 import com.example.to_do_app.services.TaskService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
-    @Autowired
     private final TaskService  taskService;
     public TaskController(TaskService taskService){
         this.taskService=taskService;
@@ -30,23 +28,24 @@ public class TaskController {
     }
     @GetMapping("/incomplete")
     public ResponseEntity<List<Task>> getAllIncompleteTasks() {
-        return ResponseEntity.ok(taskService.findAllInCompletetask());
+        return ResponseEntity.ok(taskService.findAllCompletetask());
     }
 
     @PostMapping("/")
-    public ResponseEntity<Task> createTasks(@Requestbody task task) {
+    public ResponseEntity<Task> createTasks(@RequestBody Task task) {
         return ResponseEntity.ok(taskService.createNewTask(task));
     }
     
-    @PutMapping("/")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @requestBody Task task) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         task.setId(id);
         return ResponseEntity.ok(taskService.updateTask(task));
     }
     
-    @DeleteMapping("/")
-    public ResponseEntity<Boolean> getAllTasks(@PathVariable Long id) {
-       taskService.deleteTask(id);
-        return ResponseEntity.ok(true);
+    @DeleteMapping("/tasks/{id}")
+    public ResponseEntity<Void> getAllTasks(@PathVariable Long id) {
+       taskService.deleteTask(id);;
+        return ResponseEntity.noContent().build();
     }
 }
+

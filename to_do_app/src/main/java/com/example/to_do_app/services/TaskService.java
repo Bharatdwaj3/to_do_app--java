@@ -11,7 +11,7 @@ import java.util.List;
 public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
-    public Task createNewYork(Task task){
+    public Task createNewTask(Task task){
         return taskRepository.save(task);
     }
     public List<Task> getAllTask(){
@@ -26,11 +26,11 @@ public class TaskService {
     }
 
     public List<Task> findAllCompletetask() {
-        return taskRepository.findByCompletedFalse();
+        return taskRepository.findByCompleteFalse();
     }
 
-    public void deleteTask(Task task){
-        taskRepository.delete(task);
+    public void deleteTask(Long taskId){
+        taskRepository.deleteById(taskId);
     }
 
     public Task updateTask(Task task){
