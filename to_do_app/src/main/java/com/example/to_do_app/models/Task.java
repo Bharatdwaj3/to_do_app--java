@@ -21,19 +21,19 @@ public class Task {
     public Long getId(){
         return id;
     }
-    public Long setId(Long id){
+    public void setId(Long id){
         this.id=id;
     }
-    public Long getTask(){
+    public String getTask(){
         return task;
     }
-    public Long setTask(String task){
+    public void  setTask(String task){
         this.task=task;
     }
-    public Long isComleted(){
+    public boolean isComleted(){
         return completed;
     }
-    public Long setCompleted(boolean completed){
+    public void setCompleted(boolean completed){
         this.completed=completed;
     }
 }
