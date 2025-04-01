@@ -30,7 +30,7 @@ public class TaskService {
     }
 
     public List<Task> findAllCompletetask() {
-        return taskRepository.findByCompleteFalse();
+        return taskRepository.findByCompletedFalse();
     }
 
     public void deleteTask(Long taskId){
